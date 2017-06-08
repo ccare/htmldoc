@@ -176,7 +176,9 @@ module PDF
       reset
       # Execute
       command = @@program_path + " " + get_command_options + " " + get_command_pages + " 2>&1"
+      puts command
       result = IO.popen(command) { |s| s.read }
+      puts result
       # Check whether the program really was executed
       if $?.exitstatus == 127
         raise HTMLDocException.new("Invalid program path: #{@@program_path}")
